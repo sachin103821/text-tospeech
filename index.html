@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Text to Speech Converter</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+    
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+}
+
+textarea {
+  width: 100%;
+  height: 150px;
+  background-color:#96bae1;
+  margin-bottom: 10px;
+  padding: 8px;
+  resize: none;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+button:hover {
+  background-color: #215746;
+  transition: 1s;
+  font-size:15px;
+  opacity: 40%;
+
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2 style>Text to Speech Converter</h2>
+  <textarea id="textInput" placeholder="Enter text here..."></textarea>
+  <button onclick="convertToSpeech()">Convert to Speech</button>
+</div>
+
+<script>
+function convertToSpeech() {
+  var textInput = document.getElementById('textInput').value;
+  
+  if ('speechSynthesis' in window) {
+    var synth = window.speechSynthesis;
+    var utterance = new SpeechSynthesisUtterance(textInput);
+    synth.speak(utterance);
+  } else {
+    alert('Sorry, your browser does not support text to speech conversion.');
+  }
+}
+</script>
+
+</body>
+</html>
